@@ -6,10 +6,5 @@
 	<body>
 		<h1><%= title %></h1>
 		<%= message %> <%- include('navbar', {links: links}) %>
-		<ul>
-			<% games.forEach((game) => { %> <%- include('games/game', {game: game});
-			%> <% }); %>
-		</ul>
-		<a href="/create">Add a game</a>
 	</body>
 </html>

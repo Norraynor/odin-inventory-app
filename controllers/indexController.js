@@ -1,7 +1,7 @@
-const db = require("../storages/usersStorage");
+// const db = require("../storages/usersStorage");
 const createCustomNotFoundError = require("../errors/CustomNotFoundError");
 const { body, validationResult } = require("express-validator");
-const db = require("../db/queries");
+const db = require("../storages/db/queries");
 
 const alphaErr = "must only contain letters.";
 const lengthErr = "must be between 1 and 10 characters.";
@@ -35,6 +35,13 @@ function usersListGet(req, res) {
 	res.render("index", {
 		title: "User list",
 		users: usersStorage.getUsers(),
+	});
+}
+function aboutGet(req, res) {
+	res.render("about", {
+		title: "About",
+		message: "This is the about page",
+		links: res.locals.links,
 	});
 }
 function usersCreateGet(req, res) {

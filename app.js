@@ -9,6 +9,18 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
+const links = [
+	{ href: "/", text: "Home" },
+	{ href: "about", text: "About" },
+	{ href: "dev", text: "Dev" },
+	{ href: "game", text: "Game" },
+	{ href: "genre", text: "Genre" },
+];
+app.use((req, res, next) => {
+	res.locals.links = links;
+	next();
+});
+
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 
