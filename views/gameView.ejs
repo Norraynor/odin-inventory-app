@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="/styles.css" />
+		<title><%= title %></title>
+	</head>
+	<body>
+		<h1><%= title %></h1>
+		<%= message %> <%- include('navbar', {links: links}) %>
+		<h3>Title: <%= game.name %></h3>
+		<h5>Release date:<%= game.year %></h5>
+		<h4>Developer: <%= game.developer %></h4>
+
+		<a href="/create">Add a game</a>
+	</body>
+</html>

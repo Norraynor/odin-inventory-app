@@ -20,21 +20,25 @@ const validateUser = [
 		.isLength({ min: 1, max: 10 })
 		.withMessage(`Last name ${lengthErr}`),
 ];
-async function getUserById(req, res) {
-	const { userId } = req.params;
+// async function getUserById(req, res) {
+// 	const { userId } = req.params;
 
-	const user = await db.getUserById(Number(userId));
+// 	const user = await db.getUserById(Number(userId));
 
-	if (!user) {
-		throw createCustomNotFoundError("User not found");
-	}
+// 	if (!user) {
+// 		throw createCustomNotFoundError("User not found");
+// 	}
 
-	res.send(`User Name: ${user.name}`);
-}
-function usersListGet(req, res) {
+// 	res.send(`User Name: ${user.name}`);
+// }
+async function gamesListGet(req, res) {
+	const games = await db.getAllGames();
+	console.log(games);
 	res.render("index", {
-		title: "User list",
-		users: usersStorage.getUsers(),
+		title: "Games list",
+		message: "List of all games",
+		games: games,
+		links: res.locals.links,
 	});
 }
 function aboutGet(req, res) {
@@ -113,10 +117,11 @@ exports.usersDeletePost = (req, res) => {
 };
 
 module.exports = {
-	getUserById,
-	usersListGet,
+	// getUserById,
+	gamesListGet,
 	usersCreateGet,
 	getUsernames,
 	createUsernameGet,
 	createUsernamePost,
+	aboutGet,
 };

@@ -1,5 +1,6 @@
 <li>
-	ID: <%= game.id %>, Name: <%= game.title %>
+	ID: <%= game.id %>, Name: <%= game.name %>
+	<a href="/game/<%= game.id %>">View</a>
 	<a href="/<%= game.id %>/update">Update</a>
 	<!-- This time we're sending a POST request to our route, so we need a form. -->
 	<form action="/<%= game.id %>/delete" method="POST" style="display: inline">
